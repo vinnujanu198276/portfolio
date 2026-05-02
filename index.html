@@ -10,7 +10,6 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{background:linear-gradient(135deg,#020617,#0f172a);color:#fff;overflow-x:hidden}
 
-/* floating background glow */
 body::before{
  content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;
  background:radial-gradient(circle at center,#38bdf820 0%,transparent 60%);
@@ -20,20 +19,19 @@ body::before{
 
 header{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:rgba(2,6,23,0.7);backdrop-filter:blur(10px);position:sticky;top:0}
 header h1{color:#38bdf8}
-nav a{margin:0 15px;color:#fff;text-decoration:none;position:relative}
+nav a{margin:0 10px;color:#fff;text-decoration:none;position:relative;font-size:14px}
 nav a::after{content:'';position:absolute;width:0;height:2px;background:#38bdf8;left:0;bottom:-5px;transition:0.3s}
 nav a:hover::after{width:100%}
 
 .hero{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;text-align:center}
 .hero-img{width:250px;height:250px;border-radius:50%;overflow:hidden;border:4px solid #38bdf8;box-shadow:0 0 25px #38bdf8;}
-.hero-img img{width:120%;height:120%;object-fit:cover;object-position:center;transition:0.5s;transform:translate(-10%,-10%)}
-.hero-img img:hover{transform:scale(1.05) translate(-10%,-10%) rotate(5deg)}
+.hero-img img{width:120%;height:120%;object-fit:cover;transform:translate(-10%,-10%)}
 .hero h2{font-size:45px;margin-top:10px}
 .hero span{color:#38bdf8}
 
 .typing{border-right:3px solid #38bdf8;white-space:nowrap;overflow:hidden;width:0;animation:typing 4s steps(30,end) forwards, blink 0.7s infinite}
 
-.btn{padding:12px 25px;background:#38bdf8;border:none;border-radius:30px;color:#000;cursor:pointer;margin-top:15px;transition:0.3s}
+.btn{padding:10px 20px;background:#38bdf8;border:none;border-radius:25px;color:#000;cursor:pointer;margin-top:10px;text-decoration:none;display:inline-block}
 .btn:hover{transform:scale(1.1);box-shadow:0 0 20px #38bdf8}
 
 .section{padding:80px 50px;opacity:0;transform:translateY(50px);transition:1s}
@@ -41,20 +39,14 @@ nav a:hover::after{width:100%}
 .section h2{text-align:center;margin-bottom:30px}
 
 .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:rgba(30,41,59,0.6);backdrop-filter:blur(10px);padding:20px;border-radius:15px;transition:0.4s}
-.card:hover{transform:translateY(-15px) scale(1.05);box-shadow:0 0 25px rgba(56,189,248,0.6)}
+.card{background:rgba(30,41,59,0.6);padding:20px;border-radius:15px;transition:0.4s}
+.card:hover{transform:translateY(-10px);box-shadow:0 0 20px rgba(56,189,248,0.5)}
 
 .skills{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
-.skill{background:#38bdf8;color:#000;padding:10px 20px;border-radius:20px;transition:0.3s}
-.skill:hover{transform:scale(1.2);box-shadow:0 0 15px #38bdf8}
+.skill{background:#38bdf8;color:#000;padding:10px 20px;border-radius:20px}
 
 .contact{text-align:center}
 .contact input,.contact textarea{width:80%;margin:10px;padding:10px;border-radius:10px;border:none}
-
-/* social icons */
-.social{margin-top:20px}
-.social a{margin:0 10px;font-size:20px;color:#38bdf8;transition:0.3s}
-.social a:hover{color:#fff;transform:scale(1.3)}
 
 footer{text-align:center;padding:20px;background:#020617}
 
@@ -73,6 +65,8 @@ footer{text-align:center;padding:20px;background:#020617}
 <a href="#about">About</a>
 <a href="#projects">Projects</a>
 <a href="#skills">Skills</a>
+<a href="#hobbies">Hobbies</a>
+<a href="#extra">Strengths</a>
 <a href="#contact">Contact</a>
 </nav>
 </header>
@@ -80,31 +74,42 @@ footer{text-align:center;padding:20px;background:#020617}
 <section class="hero">
 <div class="hero-img"><img src="./profile.jpg" alt="Vinay"></div>
 <h2>Hi, I'm <span>Vinay Kumar</span></h2>
-<p class="typing">Aspiring Developer | Python | Web Developer</p>
+<p class="typing">Full Stack Developer | Python | JavaScript</p>
 <button class="btn" onclick="scrollToSection('projects')">View Work</button>
-<div class="social">
-<a href="#">🌐</a>
-<a href="#">💼</a>
-<a href="#">🐱</a>
-</div>
 </section>
 
 <section id="about" class="section">
 <h2>About Me</h2>
 <p style="text-align:center;max-width:700px;margin:auto">
-I am a passionate developer currently pursuing the ACT Program with a strong interest in web development and Python programming. I enjoy building modern, responsive websites, creating practical Python applications, and developing interactive projects that solve real problems.
+I am a curious and self-driven Full Stack Developer currently pursuing the ACT Program. I enjoy building modern web applications and solving real-world problems using Python and JavaScript.
 </p>
 <p style="text-align:center;max-width:700px;margin:auto;margin-top:15px">
-My strengths include clean user interface design, smooth animations, and thoughtful problem solving. I am always learning new tools and techniques, collaborating with others, and pushing my skills further by turning ideas into polished, functional products.
+I am passionate about continuously learning new technologies, improving my development skills, and creating impactful digital solutions. I focus on writing clean code and building user-friendly interfaces.
 </p>
 </section>
 
 <section id="projects" class="section">
 <h2>Projects</h2>
 <div class="projects">
-<div class="card"><h3>Movie Booking System</h3><p>Python-based booking system that streamlines ticket selection, pricing, and seat selection while keeping the flow efficient and user-friendly.</p></div>
-<div class="card"><h3>Advanced Portfolio</h3><p>Responsive portfolio website built with modern animations and optimized loading for a fast, efficient visitor experience.</p></div>
-<div class="card"><h3>3D Shooter Game</h3><p>Fast-paced JavaScript game with smooth controls and efficient collision handling for a polished, responsive gameplay experience.</p></div>
+
+<div class="card">
+<h3>Movie Booking System</h3>
+<p>Python-based system for ticket booking and management.</p>
+<a href="#" class="btn">View Code</a>
+</div>
+
+<div class="card">
+<h3>Advanced Portfolio</h3>
+<p>Modern responsive portfolio with animations.</p>
+<a href="#" class="btn">View Code</a>
+</div>
+
+<div class="card">
+<h3>3D Shooter Game</h3>
+<p>Interactive JavaScript-based game with controls.</p>
+<a href="#" class="btn">View Code</a>
+</div>
+
 </div>
 </section>
 
@@ -115,7 +120,27 @@ My strengths include clean user interface design, smooth animations, and thought
 <div class="skill">HTML</div>
 <div class="skill">CSS</div>
 <div class="skill">JavaScript</div>
-<div class="skill">Problem Solving</div>
+<div class="skill">Git</div>
+</div>
+</section>
+
+<section id="hobbies" class="section">
+<h2>Hobbies & Interests</h2>
+<div class="skills">
+<div class="skill"> Building Projects</div>
+<div class="skill"> Learning New Tech</div>
+<div class="skill">listening to Music</div>
+<div class="skill"> Exploring Tech</div>
+</div>
+</section>
+
+<section id="extra" class="section">
+<h2>Strengths</h2>
+<div class="skills">
+<div class="skill">🚀 Quick Learner</div>
+<div class="skill">🎯 Self-Motivated</div>
+<div class="skill">🤝 communation skills </div>
+<div class="skill">💡 Creative Thinking</div>
 </div>
 </section>
 
@@ -132,15 +157,20 @@ My strengths include clean user interface design, smooth animations, and thought
 </footer>
 
 <script>
-function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});} 
+function scrollToSection(id){
+ document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
 const sections=document.querySelectorAll('.section');
 window.addEventListener('scroll',()=>{
-sections.forEach(sec=>{
-const top=window.scrollY;
-const offset=sec.offsetTop-300;
-const height=sec.offsetHeight;
-if(top>=offset&&top<offset+height){sec.classList.add('show');}
-});
+ sections.forEach(sec=>{
+  const top=window.scrollY;
+  const offset=sec.offsetTop-300;
+  const height=sec.offsetHeight;
+  if(top>=offset&&top<offset+height){
+    sec.classList.add('show');
+  }
+ });
 });
 </script>
 
