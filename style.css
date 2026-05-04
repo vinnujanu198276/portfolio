@@ -253,7 +253,6 @@ nav a:hover::after {
 .hero h2 {
   font-size: 45px;
   margin-top: 10px;
-  opacity: 0;
   transform: translateY(20px);
   animation: heroEntrance 0.8s ease-out forwards 0.6s;
 }
@@ -267,8 +266,7 @@ nav a:hover::after {
   white-space: nowrap;
   overflow: hidden;
   width: 0;
-  opacity: 0;
-  animation: typing 4s steps(43, end) forwards, blink 0.7s infinite, fadeIn 0.8s ease-out forwards 1.5s;
+  animation: typing 4s steps(43, end) forwards, blink 0.7s infinite;
 }
 
 .btn {
@@ -282,7 +280,6 @@ nav a:hover::after {
   text-decoration: none;
   display: inline-block;
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  opacity: 0;
   transform: translateY(12px);
   animation: heroEntrance 0.8s ease-out forwards 2.2s;
 }
@@ -294,7 +291,7 @@ nav a:hover::after {
 }
 
 @keyframes heroEntrance {
-  to { opacity: 1; transform: translateY(0); }
+  to { transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -303,15 +300,13 @@ nav a:hover::after {
 
 .section {
   padding: 80px 50px;
-  opacity: 0;
   transform: translateY(50px);
-  transition: opacity 1s, transform 1s, box-shadow 0.3s ease, background 0.3s ease;
+  transition: transform 1s, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .section.show {
-  opacity: 1;
   transform: translateY(0);
-}
+}}
 
 .section:hover {
   transform: translateY(-6px);
