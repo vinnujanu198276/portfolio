@@ -1,11 +1,11 @@
 /* CSS Variables for efficiency */
 :root {
-  --primary-bg: #1c0f16;
-  --secondary-bg: #2d1621;
-  --accent: #b84558;
-  --text: #f5ece7;
-  --card-bg: rgba(184, 69, 88, 0.18);
-  --header-bg: rgba(28, 15, 22, 0.88);
+  --primary-bg: #071a37;
+  --secondary-bg: #102a55;
+  --accent: #38bdf8;
+  --text: #e8f1ff;
+  --card-bg: rgba(56, 189, 248, 0.16);
+  --header-bg: #000000;
 }
 
 * {
@@ -19,6 +19,7 @@ body {
   background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
   color: var(--text);
   overflow-x: hidden;
+  padding-top: 70px;
 }
 
 body::before {
@@ -28,7 +29,7 @@ body::before {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at center, rgba(184, 69, 88, 0.14) 0%, transparent 60%);
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.14) 0%, transparent 60%);
   animation: rotateBg 20s linear infinite;
   z-index: -1;
 }
@@ -41,12 +42,15 @@ body::before {
 header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 20px 50px;
-  background: var(--header-bg);
-  backdrop-filter: blur(10px);
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
+  left: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #222;
+  z-index: 1000;
 }
 
 header h1 {
@@ -77,12 +81,130 @@ nav a:hover::after {
 }
 
 .hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   text-align: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 45%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.tech-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.45;
+  animation: driftShape 20s infinite ease-in-out;
+}
+
+.shape.s1 {
+  width: 220px;
+  height: 220px;
+  top: 15%;
+  left: 5%;
+  background: rgba(56, 189, 248, 0.22);
+}
+
+.shape.s2 {
+  width: 150px;
+  height: 150px;
+  top: 10%;
+  right: 8%;
+  background: rgba(56, 189, 248, 0.12);
+  animation-duration: 24s;
+}
+
+.shape.s3 {
+  width: 180px;
+  height: 180px;
+  bottom: 8%;
+  left: 14%;
+  background: rgba(56, 189, 248, 0.16);
+  animation-duration: 22s;
+}
+
+.shape.s4 {
+  width: 120px;
+  height: 120px;
+  bottom: 18%;
+  right: 18%;
+  background: rgba(56, 189, 248, 0.14);
+  animation-duration: 18s;
+}
+
+.shape.s5 {
+  width: 80px;
+  height: 80px;
+  top: 52%;
+  left: 55%;
+  background: rgba(255, 255, 255, 0.12);
+  animation-duration: 26s;
+}
+
+.tech-symbol {
+  position: absolute;
+  color: rgba(245, 236, 231, 0.16);
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  animation: floatSymbol 18s ease-in-out infinite, pulseSymbol 6s ease-in-out infinite;
+}
+
+.tech-symbol.t1 { top: 12%; left: 8%; font-size: 40px; animation-duration: 16s; }
+.tech-symbol.t2 { top: 18%; right: 10%; font-size: 32px; animation-duration: 14s; animation-delay: 2s; }
+.tech-symbol.t3 { top: 40%; left: 15%; font-size: 32px; animation-duration: 20s; animation-delay: 4s; }
+.tech-symbol.t4 { top: 60%; right: 8%; font-size: 36px; animation-duration: 18s; animation-delay: 1s; }
+.tech-symbol.t5 { top: 72%; left: 20%; font-size: 28px; animation-duration: 22s; animation-delay: 3s; }
+.tech-symbol.t6 { top: 28%; left: 55%; font-size: 30px; animation-duration: 19s; animation-delay: 5s; }
+.tech-symbol.t7 { top: 52%; right: 22%; font-size: 26px; animation-duration: 21s; animation-delay: 6s; }
+
+@keyframes floatSymbol {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0.35; }
+  20% { transform: translate(16px, -12px) rotate(-4deg); opacity: 0.5; }
+  40% { transform: translate(-14px, 18px) rotate(3deg); opacity: 0.3; }
+  60% { transform: translate(14px, 10px) rotate(-2deg); opacity: 0.55; }
+  80% { transform: translate(-6px, 24px) rotate(2deg); opacity: 0.4; }
+  100% { transform: translate(0, 0) rotate(0deg); opacity: 0.35; }
+}
+
+@keyframes pulseSymbol {
+  0%, 100% { text-shadow: 0 0 10px rgba(56, 189, 248, 0.08); }
+  50% { text-shadow: 0 0 24px rgba(56, 189, 248, 0.16); }
+}
+
+@keyframes driftShape {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(12px, -18px) scale(1.05); }
+  50% { transform: translate(-18px, 12px) scale(0.95); }
+  75% { transform: translate(14px, 22px) scale(1.02); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
 .hero-img {
@@ -94,13 +216,19 @@ nav a:hover::after {
   box-shadow: 0 0 25px var(--accent);
   position: relative;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: floatImage 6s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .hero-img::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(56, 189, 248, 0.15);
+  background: rgba(56, 189, 248, 0.12);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -123,6 +251,9 @@ nav a:hover::after {
 .hero h2 {
   font-size: 45px;
   margin-top: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroEntrance 0.8s ease-out forwards 0.6s;
 }
 
 .hero span {
@@ -134,7 +265,8 @@ nav a:hover::after {
   white-space: nowrap;
   overflow: hidden;
   width: 0;
-  animation: typing 4s steps(43, end) forwards, blink 0.7s infinite;
+  opacity: 0;
+  animation: typing 4s steps(43, end) forwards, blink 0.7s infinite, fadeIn 0.8s ease-out forwards 1.5s;
 }
 
 .btn {
@@ -148,12 +280,23 @@ nav a:hover::after {
   text-decoration: none;
   display: inline-block;
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroEntrance 0.8s ease-out forwards 2.2s;
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 24px rgba(184, 69, 88, 0.6);
-  background: #d45a6b;
+  transform: scale(1.08);
+  box-shadow: 0 0 28px rgba(56, 189, 248, 0.7);
+  background: #60a5fa;
+}
+
+@keyframes heroEntrance {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
 .section {
@@ -190,20 +333,20 @@ nav a:hover::after {
 
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
 }
 
 .card {
   background: var(--card-bg);
-  padding: 20px;
+  padding: 30px;
   border-radius: 15px;
   transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 0 24px rgba(184, 69, 88, 0.35);
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
 }
 
 .skills {
@@ -214,10 +357,11 @@ nav a:hover::after {
 }
 
 .skill {
-  background: rgba(184, 69, 88, 0.9);
+  background: rgba(56, 189, 248, 0.9);
   color: #fff;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 20px;
+  font-size: 15px;
 }
 
 .contact {
