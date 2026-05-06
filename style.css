@@ -8,6 +8,15 @@
   --header-bg: #000000;
 }
 
+body.light-mode {
+  --primary-bg: #f8fafc;
+  --secondary-bg: #e2e8f0;
+  --accent: #0284c7;
+  --text: #0f172a;
+  --card-bg: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.95);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +29,30 @@ body {
   color: var(--text);
   overflow-x: hidden;
   padding-top: 70px;
+  cursor: none; /* For custom cursor */
+}
+
+/* Custom Cursor */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--accent);
+}
+
+.cursor-dot, .cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 body::before {
@@ -42,19 +75,39 @@ body::before {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 50px;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(10, 10, 10, 0.95);
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
+}
+
+body.light-mode header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
   color: var(--accent);
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.theme-btn:hover {
+  color: var(--accent);
+  transform: rotate(20deg);
 }
 
 nav a {
@@ -269,25 +322,58 @@ nav a:hover::after {
   animation: typing 4s steps(43, end) forwards, blink 0.7s infinite;
 }
 
+.hero-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  animation: heroEntrance 0.8s ease-out forwards 2.2s;
+  transform: translateY(12px);
+}
+
+.social-links {
+  margin-top: 25px;
+  display: flex;
+  gap: 20px;
+  animation: heroEntrance 0.8s ease-out forwards 2.4s;
+  transform: translateY(12px);
+}
+
+.social-links a {
+  color: var(--text);
+  font-size: 24px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  transform: translateY(-5px);
+}
+
 .btn {
   padding: 10px 20px;
   background: var(--accent);
-  border: none;
+  border: 2px solid var(--accent);
   border-radius: 25px;
   color: #fff;
   cursor: pointer;
-  margin-top: 10px;
   text-decoration: none;
   display: inline-block;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  transform: translateY(12px);
-  animation: heroEntrance 0.8s ease-out forwards 2.2s;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
 }
 
 .btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 28px rgba(56, 189, 248, 0.7);
-  background: #60a5fa;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: #fff;
 }
 
 @keyframes heroEntrance {
@@ -301,11 +387,13 @@ nav a:hover::after {
 .section {
   padding: 80px 50px;
   transform: translateY(50px);
-  transition: transform 1s, box-shadow 0.3s ease, background 0.3s ease;
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .section.show {
   transform: translateY(0);
+  opacity: 1;
 }}
 
 .section:hover {
@@ -325,7 +413,82 @@ nav a:hover::after {
 
 .section h2 {
   text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Timeline */
+.timeline-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px 0;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: var(--accent);
+}
+
+.timeline-item {
+  position: relative;
   margin-bottom: 30px;
+  padding-left: 50px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 12px;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  background: var(--card-bg);
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.timeline-content {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.timeline-date {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Project Filters */
+.project-filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--text);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
 }
 
 .projects {
@@ -366,9 +529,18 @@ nav a:hover::after {
 
 .links a {
   margin-right: 15px;
-  color: #00adb5;
+  color: var(--accent);
   text-decoration: none;
   font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px var(--accent);
 }
 
 .skills {
@@ -379,11 +551,51 @@ nav a:hover::after {
 }
 
 .skill {
-  background: rgba(56, 189, 248, 0.9);
-  color: #fff;
+  background: var(--card-bg);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--text);
   padding: 12px 24px;
   border-radius: 20px;
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.skill:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+}
+
+/* Learning Section */
+.learning-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.learning-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 350px;
+  transition: transform 0.3s;
+  border-top: 3px solid var(--accent);
+}
+
+.learning-card i {
+  font-size: 40px;
+  color: var(--accent);
+  margin-bottom: 15px;
+}
+
+.learning-card:hover {
+  transform: translateY(-10px);
 }
 
 .contact {

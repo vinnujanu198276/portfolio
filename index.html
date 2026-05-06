@@ -5,9 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vinay Kumar | Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
 
 <header>
 <h1>N.Vinay Kumar</h1>
@@ -19,6 +23,7 @@
 <a href="#hobbies">Hobbies</a>
 <a href="#extra">Strengths</a>
 <a href="#contact">Contact</a>
+<button id="theme-toggle" class="theme-btn"><i class="fa-solid fa-moon"></i></button>
 </nav>
 </header>
 <!-- Comment -->
@@ -42,7 +47,15 @@
 <div class="hero-img"><img src="./profile_pic.jpg" alt="Vinay"></div>
 <h2>Hi, I'm <span>Vinay Kumar</span></h2>
 <p class="typing">Full Stack Developer | Python | JavaScript</p>
-<button class="btn" onclick="scrollToSection('projects')">View Work</button>
+<div class="hero-actions">
+  <button class="btn" onclick="scrollToSection('projects')">View Work</button>
+  <a href="resume.pdf" class="btn btn-outline" download><i class="fa-solid fa-download"></i> Resume</a>
+</div>
+<div class="social-links">
+  <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+  <a href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="mailto:your.email@example.com"><i class="fa-solid fa-envelope"></i></a>
+</div>
 </section>
 
 <section id="about" class="section">
@@ -72,12 +85,44 @@
 
 </section>
 
+<!-- TIMELINE SECTION -->
+<section id="timeline" class="section">
+<h2>Education & Journey</h2>
+<div class="timeline-container">
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h3>ACT Program</h3>
+      <p class="timeline-date">Current</p>
+      <p>Building strong foundations in Full Stack Development, focusing on real-world application building and problem-solving.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h3>Self-Taught Developer</h3>
+      <p class="timeline-date">Ongoing</p>
+      <p>Continuously learning Python, JavaScript, HTML, CSS, SQL, and modern AI technologies.</p>
+    </div>
+  </div>
+</div>
+</section>
+
 <section id="projects" class="section">
 <h2>Projects</h2>
+
+<div class="project-filters">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="python">Python</button>
+  <button class="filter-btn" data-filter="js">JavaScript</button>
+  <button class="filter-btn" data-filter="sql">SQL</button>
+  <button class="filter-btn" data-filter="genai">GenAI</button>
+</div>
+
 <div class="projects">
 
 <!-- PROJECT 1 -->
-<div class="card">
+<div class="card" data-category="python sql">
 <h3>Movie Booking System</h3>
 <p>
 A Python and SQL-based desktop application designed to simulate a real-world movie ticket booking system.  
@@ -90,12 +135,14 @@ The system also includes an admin panel to manage movies, update show timings, a
 
 <p><b>Key Features:</b> User authentication, seat selection, booking management, database integration</p>
 <p><b>Tech Stack:</b> Python, SQL</p>
-<!-- <a href="https://github.com/yourusername/movie-booking" target="_blank">View Project</a> -->
+<div class="links">
+  <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Source Code</a>
+</div>
 </div>
 
 
-<!-- PROJECT 3 -->
-<div class="card">
+<!-- PROJECT 2 -->
+<div class="card" data-category="js">
 <h3>3D Shooter Game</h3>
 <p>
 An interactive browser-based shooting game built using JavaScript.  
@@ -108,11 +155,13 @@ It demonstrates logic building, event handling, and real-time interaction using 
 
 <p><b>Key Features:</b> Game controls, scoring system, dynamic gameplay</p>
 <p><b>Tech Stack:</b> JavaScript, HTML Canvas</p>
-<a href="https://vinnujanu198276.github.io/Gen-AI-TEST/" target="_blank">View Project</a>
+<div class="links">
+  <a href="https://vinnujanu198276.github.io/Gen-AI-TEST/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+</div>
 </div>
 
-<!-- PROJECT 4 -->
-<div class="card">
+<!-- PROJECT 3 -->
+<div class="card" data-category="genai js">
 <h3>AI Chat Assistant (GenAI Project)</h3>
 <p>
 An AI-powered chatbot project designed using Generative AI concepts and prompt engineering techniques.  
@@ -125,10 +174,13 @@ This project helped me understand AI interaction, prompt structuring, and API-ba
 
 <p><b>Key Features:</b> AI responses, prompt handling, conversational flow</p>
 <p><b>Tech Stack:</b> GenAI, JavaScript</p>
+<div class="links">
+  <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Source Code</a>
+</div>
 </div>
 
-<!-- PROJECT 5 -->
-<div class="card">
+<!-- PROJECT 4 -->
+<div class="card" data-category="python sql">
 <h3>Student Management System</h3>
 <p>
 A database-driven application designed to manage student records efficiently.  
@@ -141,9 +193,12 @@ The system ensures structured data storage and easy retrieval using SQL queries.
 
 <p><b>Key Features:</b> CRUD operations, database management, record tracking</p>
 <p><b>Tech Stack:</b> Python, SQL</p>
+<div class="links">
+  <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Source Code</a>
+</div>
 </div>
 
-<div class="card">
+<div class="card" data-category="js">
 <h3>🎉 Event Nest</h3>
 <p>
 A web-based event management platform where users can discover, create, and manage events with an interactive UI.
@@ -154,8 +209,8 @@ A web-based event management platform where users can discover, create, and mana
   <li>User-friendly interface</li>
 </ul>
 <div class="links">
-  <!-- <a href="https://github.com/yourusername/event-nest" target="_blank">🔗 GitHub</a> -->
-  <!-- <a href="#" target="_blank">🚀 Live Demo</a> -->
+  <a href="#" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+  <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
 </div>
 </div>
 
@@ -181,18 +236,33 @@ I continuously explore new technologies like GenAI, SQL optimization, and modern
 <h2>Skills</h2>
 <div class="skills">
 
-<div class="skill">Python</div>
-<div class="skill">HTML</div>
-<div class="skill">CSS</div>
-<div class="skill">JavaScript</div>
-<div class="skill">Git</div>
+<div class="skill"><i class="fa-brands fa-python"></i> Python</div>
+<div class="skill"><i class="fa-brands fa-html5"></i> HTML</div>
+<div class="skill"><i class="fa-brands fa-css3-alt"></i> CSS</div>
+<div class="skill"><i class="fa-brands fa-js"></i> JavaScript</div>
+<div class="skill"><i class="fa-brands fa-git-alt"></i> Git</div>
+<div class="skill"><i class="fa-solid fa-database"></i> SQL</div>
+<div class="skill"><i class="fa-solid fa-robot"></i> AI / ML Basics</div>
+<div class="skill"><i class="fa-solid fa-brain"></i> GenAI (Prompt Engineering)</div>
+<div class="skill"><i class="fa-solid fa-comments"></i> Communication Skills</div>
 
-<!-- NEW SKILLS ADDED -->
-<div class="skill">SQL</div>
-<div class="skill">AI / Machine Learning Basics</div>
-<div class="skill">GenAI (Prompt Engineering)</div>
-<div class="skill">Communication Skills</div>
+</div>
+</section>
 
+<!-- WHAT I'M LEARNING SECTION -->
+<section id="learning" class="section">
+<h2>What I'm Exploring Right Now</h2>
+<div class="learning-container">
+  <div class="learning-card">
+    <i class="fa-solid fa-wand-magic-sparkles"></i>
+    <h3>Generative AI Integrations</h3>
+    <p>Exploring how to integrate LLMs (Large Language Models) into web applications to build smarter tools.</p>
+  </div>
+  <div class="learning-card">
+    <i class="fa-solid fa-layer-group"></i>
+    <h3>Modern Frameworks</h3>
+    <p>Diving deeper into advanced frontend architectures to build highly scalable and responsive user interfaces.</p>
+  </div>
 </div>
 </section>
 
@@ -230,6 +300,7 @@ I continuously explore new technologies like GenAI, SQL optimization, and modern
 <p>© 2026 Vinay Kumar | All Rights Reserved</p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 <script src="script.js"></script>
 
 </body>
