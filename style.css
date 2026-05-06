@@ -346,6 +346,31 @@ nav a:hover::after {
   box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
 }
 
+.project-card {
+  background: #121212;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.links a {
+  margin-right: 15px;
+  color: #00adb5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .skills {
   display: flex;
   flex-wrap: wrap;
